@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="003_RPT_D011 TRANSFERENCIAS_EXTERIOR"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{88479974-9659-4B36-B0E7-654B50156BF9}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{3B3B929B-511A-4831-91D4-7158CB41C047}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -31,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="\\192.168.1.62\Share\Transferencia_Del_Al_Exterior\TRA.IBBGA">
+          DTS:ConnectionString="C:\Users\andres.quinteros\Downloads\SSIS-RPT_ASFI\TRA.IBBGA">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ruta">
       <DTS:VariableValue
-        DTS:DataType="8">\\192.168.1.62\Share\Transferencia_Del_Al_Exterior\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\andres.quinteros\Downloads\SSIS-RPT_ASFI\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -87,7 +87,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="rutaCompleta">
       <DTS:VariableValue
-        DTS:DataType="8">\\192.168.1.62\Share\Transferencia_Del_Al_Exterior\TRA.IBBGA</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\andres.quinteros\Downloads\SSIS-RPT_ASFI\TRA.IBBGA</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -105,6 +105,7 @@
           DTS:refId="Package\Contenedor de secuencias\Cargar Archivo a la Intranet"
           DTS:CreationName="Microsoft.ScriptTask"
           DTS:Description="Tarea Script"
+          DTS:Disabled="True"
           DTS:DTSID="{DAB5AA9E-4A87-4C1D-98B6-718B8CA8B3B4}"
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
@@ -324,14 +325,35 @@
   </resheader>
 </root>]]></ProjectItem>
               <ProjectItem
-                Name="Properties\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_face4de518b34624991e35e764c8c921")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_face4de518b34624991e35e764c8c921")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
               <ProjectItem
                 Name="ScriptMain.cs"
                 Encoding="UTF8"><![CDATA[
@@ -443,35 +465,14 @@ namespace ST_face4de518b34624991e35e764c8c921.Properties {
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="Properties\AssemblyInfo.cs"
-                Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_face4de518b34624991e35e764c8c921")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_face4de518b34624991e35e764c8c921")]
-[assembly: AssemblyCopyright("Copyright @  2024")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
