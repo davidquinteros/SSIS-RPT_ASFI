@@ -1,0 +1,2383 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/13/2024 10:01:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="31AS62E322"
+  DTS:CreatorName="BG\andres.quinteros"
+  DTS:DTSID="{6F78AA92-0CB1-40A1-BC3D-B8F97CEC68E5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="16394"
+  DTS:ObjectName="003_RPT_D011 TRANSFERENCIAS_EXTERIOR"
+  DTS:PackageType="5"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{88479974-9659-4B36-B0E7-654B50156BF9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[D011]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{7297B487-E436-4577-8909-F2775598F31F}"
+      DTS:ObjectName="D011">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::rutaCompleta]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="16394"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\192.168.1.62\Share\Transferencia_Del_Al_Exterior\TRA.IBBGA">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CONCATENADO"
+              DTS:DTSID="{1A352772-F24A-44C4-9909-977C70122C8E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{874D8144-044E-4D72-ABFC-4AC03C7ADAEA}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;TR&quot;+ @[User::fechaProceso] +&quot;A.IBBGA&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="archivo">
+      <DTS:VariableValue
+        DTS:DataType="8">TRA.IBBGA</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9F74CAAE-E790-4B69-99E0-3DBC0FB3E7A2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fechaProceso">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DD5E4721-5D48-4CD6-BC28-F1DE6AF892F1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ruta">
+      <DTS:VariableValue
+        DTS:DataType="8">\\192.168.1.62\Share\Transferencia_Del_Al_Exterior\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6EE08917-8921-408B-AA29-31028216421D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::ruta]+ @[User::archivo]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="rutaCompleta">
+      <DTS:VariableValue
+        DTS:DataType="8">\\192.168.1.62\Share\Transferencia_Del_Al_Exterior\TRA.IBBGA</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Contenedor de secuencias"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Contenedor de secuencias"
+      DTS:DTSID="{42977139-F991-4082-8DB9-F28503A8A16F}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contenedor de secuencias">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor de secuencias\Cargar Archivo a la Intranet"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Tarea Script"
+          DTS:DTSID="{DAB5AA9E-4A87-4C1D-98B6-718B8CA8B3B4}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Cargar Archivo a la Intranet"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_face4de518b34624991e35e764c8c921"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp"
+              ReadOnlyVariables="User::archivo,User::rutaCompleta">
+              <ProjectItem
+                Name="ST_face4de518b34624991e35e764c8c921.csproj"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C25CAED7-7009-448F-84B2-323DABBB07B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_face4de518b34624991e35e764c8c921</RootNamespace>
+    <AssemblyName>ST_face4de518b34624991e35e764c8c921</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+using System.Net;
+
+namespace ST_face4de518b34624991e35e764c8c921
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+        public void Main()
+        {
+            // Ruta local del archivo a subir
+            var nombre_archivo = (string)Dts.Variables["archivo"].Value;
+            var rutaCompleta = (string)Dts.Variables["rutaCompleta"].Value;
+
+            string localFilePath = rutaCompleta;
+            //string localFilePath = @"C:\Share\Transferencia_Del_Al_Exterior\TR20240930A.IBBGA";
+
+            // URL completa de la carpeta de SharePoint
+            //string sharepointUrl = "https://intranetbg/sites/SP_BI/BibliotecaReportes/Documentos/TR20240930A.IBBGA";
+            string sharepointUrl = "https://intranetbg/SP_BI/Biblioteca%20Reportes%20Comunes/Reportes%20Comex/Archivos%20D011/"+ nombre_archivo;
+        
+
+            try
+            {
+                // Crear un cliente WebClient para la carga
+                using (WebClient client = new WebClient())
+                {
+                    // Establecer las credenciales
+                    //client.Credentials = new NetworkCredential(username, password, domain);
+                    client.Credentials = CredentialCache.DefaultNetworkCredentials;
+
+                    // Subir el archivo a la URL de SharePoint
+                    client.UploadFile(sharepointUrl, "PUT", localFilePath);
+
+                    //MessageBox.Show("Archivo subido con �xito.");
+                }
+
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                //MessageBox.Show($"Error al subir el archivo: {ex.Message}");
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+        }
+
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_face4de518b34624991e35e764c8c921</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_face4de518b34624991e35e764c8c921</msb:DisplayName>
+    <msb:ProjectId>{50BBC0FE-B1AC-498E-B404-159D0EF007D2}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_face4de518b34624991e35e764c8c921.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_face4de518b34624991e35e764c8c921.Properties.Settings.get_Default():ST_face4de518b34624991e35e764c8c921.Properties.Sett" +
+    "ings")]
+
+namespace ST_face4de518b34624991e35e764c8c921.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_face4de518b34624991e35e764c8c921")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_face4de518b34624991e35e764c8c921")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_face4de518b34624991e35e764c8c921.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_face4de518b34624991e35e764c8c921.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_face4de518b34624991e35e764c8c921.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_face4de518b34624991e35e764c8c921.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_face4de518b34624991e35e764c8c921.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_face4de518b34624991e35e764c8c921.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAD83/GYAAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAA2i8A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAIgvAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA4A8AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAC8
+LwAAAAAAAEgAAAACAAUAeCEAAFgNAAABAAAAAAAAANAuAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswBACVAAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
+AAAKdB0AAAEKAigQAAAKbxEAAApyEQAAcG8SAAAKbxMAAAp0HQAAAQtyKwAAcAYoFAAACgxzFQAA
+Cg0JKBYAAApvFwAACgkIcuIAAHAHbxgAAAom3goJLAYJbxkAAArcAigQAAAKFm8aAAAK3g8mAigQ
+AAAKF28aAAAK3gAqAAAAARwAAAIAUgAbbQAKAAAAAAAATAA5hQAPEAAAAR4CKBsAAAoqHgIoHAAA
+CiqufgEAAAQtHnLqAABw0AMAAAIoHQAACm8eAAAKcx8AAAqAAQAABH4BAAAEKhp+AgAABCoeAoAC
+AAAEKhp+AwAABCoeAiggAAAKKi5zCAAABoADAAAEKgAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAz
+MTkAAAAABQBsAAAABAQAACN+AABwBAAA/AUAACNTdHJpbmdzAAAAAGwKAABcAQAAI1VTAMgLAAAQ
+AAAAI0dVSUQAAADYCwAAgAEAACNCbG9iAAAAAAAAAAIAAAFXHaIBCQMAAAD6ATMAFgAAAQAAACQA
+AAAFAAAABgAAAAkAAAABAAAAIAAAAAIAAAAQAAAAAQAAAAIAAAADAAAABAAAAAEAAAAEAAAAAQAA
+AAEAAAAAALQDAQAAAAAABgBUAo4EBgDjAo4EBgCgAXsEDwACBQAABgDNATIEBgA3AjIEBgAYAjIE
+BgDKAjIEBgB0AjIEBgCNAjIEBgDkATIEBgD/AREDCgCoAlEDCgAXAVEDDgDkBb4FBgBEBOUDBgDs
+A+UDBgCDAXsEBgC3BeUDBgBeBK4EBgBOBB0EDgBTAZ4DDgC0AZ4DDgAzAQgEBgBoAY4ECgCMA1ED
+EgBEBcIAEgB+AMIABgArA+UDDgBuAL4FDgB6A74FDgBXBb4FBgCHAOUDBgDiAOUDBgCTAOUDBgDy
+BTIEAAAAACUAAAAAAAEAAQABABAA/QMBADkAAQABAAAAEAC1BBEFTQABAAMAAAEQAE4FEQVhAAMA
+BwADAQAAogUAAEUABAAKABEA8QOEABEABwGIABEAXgCMAAYGTQCQAFaAkgWTAFaA5wCTAFAgAAAA
+AIYAAwQGAAEAECEAAAAAhhhuBAYAAQAYIQAAAACDGG4EBgABACAhAAAAAJMIWgSXAAEATCEAAAAA
+kwjvAJwAAQBTIQAAAACTCPsAoQABAFshAAAAAJYIyQWnAAIAYiEAAAAAhhhuBAYAAgBqIQAAAACR
+GHQErAACAAAAAQALAwkAbgQBABEAbgQGABkAbgQKACkAbgQQADEAbgQQADkAbgQQAEEAbgQQAEkA
+bgQQAFEAbgQQAFkAbgQQAGEAbgQQAGkAbgQGAJEAbgQGALkAbgQVAMkAbgQGAHEAmgUjANEAQAUo
+ANkA3AMtAOEAAQMzAOkAsAU3AHkAbgQGAPEAdAU9AHkAZAVCAHkAtwBJAAkBSwEGANEA1QUBAHEA
+bgQGAJkAbgQGABEBpQBRABEB7gVaAKEAbgRgAMEAbgQGAAgAFAB6AAgAGAB/ACkAcwDnAC4ACwC/
+AC4AEwDIAC4AGwDnAC4AIwDwAC4AKwAZAS4AMwAZAS4AOwAZAS4AQwDwAC4ASwAfAS4AUwAZAS4A
+WwA2AUMAYwB/AEkAcwDnAGEAewB/AGMAawB/ABsAAwABAAQAAwAAAF4EsAAAAA8BtQAAAM0FugAC
+AAQAAwACAAUABQABAAYABQACAAcABwAEgAAAAQAAAFAjv2EAAAAAAAABAAAABAAAAAAAAAAAAAAA
+aABVAAAAAAAPAAAAAAAAAAAAAABxADIDAAAAAAQAAAAAAAAAAAAAAGgA5QMAAAAADwAAAAAAAAAA
+AAAAcQAuAAAAAAAAAAAAAQAAAL8EAAAFAAIAAAAAU1RfZmFjZTRkZTUxOGIzNDYyNDk5MWUzNWU3
+NjRjOGM5MjEAPE1vZHVsZT4ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2VkRFRTAHZhbHVlX18A
+bXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAENyZWRlbnRpYWxDYWNoZQBWYXJpYWJsZQBJRGlzcG9z
+YWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBVcGxvYWRGaWxlAE1pY3Jv
+c29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUAVHlwZQBGYWlsdXJlAGdldF9DdWx0dXJlAHNldF9D
+dWx0dXJlAHJlc291cmNlQ3VsdHVyZQBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJhc2UAQXBwbGlj
+YXRpb25TZXR0aW5nc0Jhc2UARGlzcG9zZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdl
+bmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVB
+dHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUA
+QXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2Vt
+Ymx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENv
+bXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFz
+c2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0
+ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUA
+Z2V0X1ZhbHVlAHZhbHVlAFN5c3RlbS5SdW50aW1lLlZlcnNpb25pbmcAU3RyaW5nAE1pY3Jvc29m
+dC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3Jp
+cHRUYXNrAE5ldHdvcmtDcmVkZW50aWFsAFNjcmlwdE9iamVjdE1vZGVsAFN5c3RlbS5Db21wb25l
+bnRNb2RlbABTVF9mYWNlNGRlNTE4YjM0NjI0OTkxZTM1ZTc2NGM4YzkyMS5kbGwAZ2V0X0l0ZW0A
+U3lzdGVtAEVudW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBT
+eXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBFeGNlcHRpb24AQ3VsdHVyZUlu
+Zm8AZ2V0X1Jlc291cmNlTWFuYWdlcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5
+c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTVF9mYWNlNGRl
+NTE4YjM0NjI0OTkxZTM1ZTc2NGM4YzkyMS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMA
+RGVidWdnaW5nTW9kZXMAU1RfZmFjZTRkZTUxOGIzNDYyNDk5MWUzNWU3NjRjOGM5MjEuUHJvcGVy
+dGllcwBnZXRfVmFyaWFibGVzAFNldHRpbmdzAElDcmVkZW50aWFscwBzZXRfQ3JlZGVudGlhbHMA
+Z2V0X0RlZmF1bHROZXR3b3JrQ3JlZGVudGlhbHMAU3VjY2VzcwBnZXRfRHRzAFNjcmlwdFJlc3Vs
+dHMAQ29uY2F0AE9iamVjdABTeXN0ZW0uTmV0AGdldF9EZWZhdWx0AHNldF9UYXNrUmVzdWx0AFdl
+YkNsaWVudABnZXRfQXNzZW1ibHkAAAAPYQByAGMAaABpAHYAbwAAGXIAdQB0AGEAQwBvAG0AcABs
+AGUAdABhAACAtWgAdAB0AHAAcwA6AC8ALwBpAG4AdAByAGEAbgBlAHQAYgBnAC8AUwBQAF8AQgBJ
+AC8AQgBpAGIAbABpAG8AdABlAGMAYQAlADIAMABSAGUAcABvAHIAdABlAHMAJQAyADAAQwBvAG0A
+dQBuAGUAcwAvAFIAZQBwAG8AcgB0AGUAcwAlADIAMABDAG8AbQBlAHgALwBBAHIAYwBoAGkAdgBv
+AHMAJQAyADAARAAwADEAMQAvAAAHUABVAFQAAHFTAFQAXwBmAGEAYwBlADQAZABlADUAMQA4AGIA
+MwA0ADYAMgA0ADkAOQAxAGUAMwA1AGUANwA2ADQAYwA4AGMAOQAyADEALgBQAHIAbwBwAGUAcgB0
+AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAN/3Cq7N8OtFm9hs7+Wj/eYABCABAQgDIAABBSAB
+ARERBCABAQ4FIAEBEVkHBwQODg4SPQQgABJpBCAAEm0FIAEScRwDIAAcBQACDg4OBAAAEn0GIAEB
+EoCBByADHQUODg4IAAESgIkRgI0FIAASgJEHIAIBDhKAkQi3elxWGTTgiQiJhF3NgIDMkQQAAAAA
+BAEAAAADBhJRAwYSVQMGEhACBggDBhEUBAAAElEEAAASVQUAAQESVQQAABIQAwAAAQQIABJRBAgA
+ElUECAASEAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAo
+AQAjU1RfZmFjZTRkZTUxOGIzNDYyNDk5MWUzNWU3NjRjOGM5MjEAAAUBAAAAABYBABFDb3B5cmln
+aHQgQCAgMjAyNAAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdvcmtE
+aXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0Lje0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNv
+dXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9
+bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2Vz
+LlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAsC8AAAAAAAAAAAAAyi8A
+AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAALwvAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3Jl
+ZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAABoEAAAAAAAAAAAAABoENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQC/YVAjAAABAL9hUCM/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsAR6AwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAABWAwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A
+AAAAAFMAVABfAGYAYQBjAGUANABkAGUANQAxADgAYgAzADQANgAyADQAOQA5ADEAZQAzADUAZQA3
+ADYANABjADgAYwA5ADIAMQAAAD4ADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAA
+LgA5ADAANAAwAC4AMgA1ADAAMgAzAAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAA
+AFMAVABfAGYAYQBjAGUANABkAGUANQAxADgAYgAzADQANgAyADQAOQA5ADEAZQAzADUAZQA3ADYA
+NABjADgAYwA5ADIAMQAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0
+AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMgA0AAAAKgABAAEATABlAGcAYQBsAFQA
+cgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBu
+AGEAbQBlAAAAUwBUAF8AZgBhAGMAZQA0AGQAZQA1ADEAOABiADMANAA2ADIANAA5ADkAMQBlADMA
+NQBlADcANgA0AGMAOABjADkAMgAxAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBt
+AGUAAAAAAFMAVABfAGYAYQBjAGUANABkAGUANQAxADgAYgAzADQANgAyADQAOQA5ADEAZQAzADUA
+ZQA3ADYANABjADgAYwA5ADIAMQAAAEIADwABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAA
+ADEALgAwAC4AOQAwADQAMAAuADIANQAwADIAMwAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAA
+VgBlAHIAcwBpAG8AbgAAADEALgAwAC4AOQAwADQAMAAuADIANQAwADIAMwAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAADcPwAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor de secuencias\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2B0FD9CA-ECE5-45E8-AC67-6F17EB1BDA2E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="[Origen de ADO NET].[SqlCommand]">"  SELECT   
+  			  '\"'||	TIPO
+		|| '\",\"' ||	MOTIVO
+		|| '\",\"' ||	DESCRIPCION_MOTIVO
+		|| '\",\"' ||	TIPO_PERSONA
+		|| '\",\"' || CODIGO_SECTOR
+		|| '\",\"' || PAIS
+		|| '\",\"' || MONEDA
+		|| '\",\"' || ENTIDAD_BANCARIA
+		|| '\",\"' || MONTO_MO
+		|| '\",\"' || MONTO_BS
+		|| '\",\"' || NRO_OPERACION
+		|| '\",\"' || FECHA_OPERACION
+		|| '\",\"' || PLAZA_PAGO
+		|| '\",\"' || NOMBRE_AGENCIA
+		|| '\",\"' || CORRESPONSAL
+		|| '\",\"' || SISTEMA
+		|| '\",\"' || MONTO_TOTAL_COBRADOX_SERVICIO
+		|| '\",\"' || CASE WHEN MONTO_COMISION_EIF_AUX &lt;=780  
+					THEN '0' 
+					ELSE  PORCENTAJE_COMISION_EIF 
+					END 
+		|| '\",\"' ||CASE WHEN MONTO_COMISION_EIF_AUX &lt;=780   
+						THEN MONTO_COMISION_EIF
+						ELSE CASE WHEN MONTO_COMISION_EIF !='0' 
+								  THEN '0'
+								 ELSE   MONTO_COMISION_EIF 
+							  END 
+						END
+		|| '\",\"' || PORCENTAJE_COMISION_BCB
+		|| '\",\"' || MONTO_COMISION_BCB
+		|| '\",\"' || PORCENTAJE_COMISION_TERCEROS
+		|| '\",\"' || MONTO_COMISION_TERCEROS
+		|| '\",\"' || DESCRIPCION_TERCEROS_COBRAN_COMISION
+		|| '\",\"' || TIPOSOLICITANTE
+		|| '\"' AS concatenado
+
+FROM (
+		SELECT    
+		              t.tipo,
+		             TRIM (SUBSTR (t.motivo, 0, 2))motivo,
+		             REPLACE (
+		                    CASE
+		                        WHEN t.motivo = '9'
+		                        THEN
+		                            NVL (
+		                                REPLACE (
+		                                    REPLACE (
+		                                        REPLACE (
+		                                            REPLACE (t.descripcion_motivo,
+		                                                     CHR (13),
+		                                                     ''),
+		                                            CHR (10),
+		                                            ''),
+		                                        '  ',
+		                                        ' '),
+		                                    '',
+		                                    'REMESA FAMILIAR'),
+		                                'REMESA FAMILIAR')
+		                        ELSE
+		                            REPLACE (
+		                                REPLACE (
+		                                    REPLACE (t.descripcion_motivo,
+		                                             CHR (10),
+		                                             ''),
+		                                    CHR (13),
+		                                    ''),
+		                                '  ',
+		                                ' ')
+		                    END,
+		                    CHR (39),
+		                    ' ') descripcion_motivo,
+		            
+		             CASE WHEN t.motivo = '9' THEN '1' ELSE t.tipo_persona END tipo_persona,
+		             
+		              t.codigo_sector,
+		             
+		              TRIM (SUBSTR (t.pais, 0, 2)) pais,
+		
+		            TRIM (SUBSTR (t.moneda, 0, 3))moneda ,
+		            TRIM (t.entidad_bancaria) entidad_bancaria,
+					TRIM (TO_CHAR (t.monto_mo, '999999999999990.99'))monto_mo,
+		            TRIM (TO_CHAR (t.monto_bs, '999999999999990.99'))monto_bs,
+		              t.nro_operacion,
+		             TO_CHAR (t.fecha_operacion, 'YYYY-MM-DD') fecha_operacion,
+					 TRIM (SUBSTR (t.plaza_pago, 0, 2)) plaza_pago,
+		              TRIM (SUBSTR (t.nombre_agencia, 0, 200))nombre_agencia,
+		              SUBSTR (t.corresponsal, 0, 30)corresponsal ,
+		               t.sistema,
+		             TRIM (
+		                    TO_CHAR (MONTO_TOTAL_COBRADOX_SERVICIO,
+		                             '999999999999990.99')) MONTO_TOTAL_COBRADOX_SERVICIO,
+		             CASE
+		                    --WHEN PORCENTAJE_COMISION_EIF != 0 AND PORCENTAJE_COMISION_EIF&lt;=99.99
+		                    WHEN     PORCENTAJE_COMISION_EIF != 0
+		                         AND PORCENTAJE_COMISION_EIF &lt;= 2.5 --este es la tasa maxima que se cobra
+		                    THEN
+		                        TRIM (
+		                            TO_CHAR (PORCENTAJE_COMISION_EIF,
+		                                     '999999999999990.99'))
+		                    ELSE
+		                        '0'
+		                END PORCENTAJE_COMISION_EIF,
+		              CASE
+		                    WHEN MONTO_COMISION_EIF != 0
+		                    THEN
+		                        TRIM (
+		                            TO_CHAR (MONTO_COMISION_EIF, '999999999999990.99'))
+		                    ELSE
+		                        '0'
+		                END MONTO_COMISION_EIF,
+					 PORCENTAJE_COMISION_BCB ,
+		 			 MONTO_COMISION_BCB,
+					 CASE
+		                    --WHEN PORCENTAJE_COMISION_TERCEROS != 0 AND PORCENTAJE_COMISION_TERCEROS&lt;=99.99
+		                    WHEN     PORCENTAJE_COMISION_TERCEROS != 0
+		                         AND PORCENTAJE_COMISION_TERCEROS &lt;= 5
+		                    THEN
+		                        --TRIM (
+		                        --    TO_CHAR (PORCENTAJE_COMISION_TERCEROS,
+		                        --             '999999999999990.99'))
+		                        '0'
+		                    ELSE
+		                        '0'
+		                END  PORCENTAJE_COMISION_TERCEROS,
+		               CASE
+		                    WHEN MONTO_COMISION_TERCEROS != 0
+		                    THEN
+		                        TRIM (
+		                            TO_CHAR (MONTO_COMISION_TERCEROS,
+		                                     '999999999999990.99'))
+		                    ELSE
+		                        '0'
+		                END MONTO_COMISION_TERCEROS,
+		
+		              CASE
+		                    WHEN MONTO_COMISION_TERCEROS != 0
+		                    THEN
+		                        DESCRIPCION_TERCEROS_COBRAN_COMISION
+		                    ELSE
+		                        ''
+		                END DESCRIPCION_TERCEROS_COBRAN_COMISION ,
+		
+					  TIPOSOLICITANTE ,
+					  MONTO_COMISION_EIF MONTO_COMISION_EIF_AUX
+		             
+		        FROM (
+					SELECT TIPO, MOTIVO, PAIS, MONEDA, ENTIDAD_BANCARIA, MONTO_MO, MONTO_BS, NRO_OPERACION, FECHA_OPERACION, PLAZA_PAGO, NOMBRE_AGENCIA, CORRESPONSAL, SISTEMA, TIPO_PERSONA, DESCRIPCION_MOTIVO, 
+					case when CODIGO_SECTOR ='00000' then '99002' else CODIGO_SECTOR end CODIGO_SECTOR, 
+					MONTO_TOTAL_COBRADOX_SERVICIO, PORCENTAJE_COMISION_EIF, MONTO_COMISION_EIF, PORCENTAJE_COMISION_BCB, MONTO_COMISION_BCB, PORCENTAJE_COMISION_TERCEROS, MONTO_COMISION_TERCEROS, DESCRIPCION_TERCEROS_COBRAN_COMISION, CODIGOCLIENTEORDBEN,
+					CASE WHEN  nvl(CodigoClienteOrdBen,0)=0 
+									THEN  '1'
+									ELSE  CASE WHEN nvl(CodigoClienteOrdBen,0)=10008174
+												THEN  '3'
+												ELSE  CASE WHEN   CodigoClienteOrdBen  IN (205,213,248,272,280,302,310,329,200948,237906,271608,536474,993506,221,274445)
+															THEN '2'
+															ELSE '1'
+													   END 
+										  END 
+								 END TIPOSOLICITANTE 
+									FROM (	SELECT '1'
+									                         tipo,
+									                     o.cod_asfi
+									                         motivo,
+									                     (SELECT codigoswift
+									                        FROM cli_paises
+									                       WHERE codigopais = NVL (o.bef_pais, 0))
+									                         pais,
+									                     m.c6402
+									                         moneda,
+									                     'IBBGA'
+									                         entidad_bancaria,
+									                     o.op_importe
+									                         monto_mo,
+									                     ganadero.fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                          0,
+									                                                          o.op_importe)
+									                         monto_bs,
+									                     o.op_numero
+									                         nro_operacion,
+									                     o.op_fecha
+									                         fecha_operacion,
+									                     NULL
+									                         plaza_pago,
+									                     ''
+									                         nombre_agencia,
+									                     REPLACE (co.nombrecliente, ',', '')
+									                         corresponsal,
+									                     1
+									                         sistema,
+									                     DECODE (c.tipo,
+									                             'E', '1',
+									                             'U', '1',
+									                             'J', '2',
+									                             'F', '1',
+									                             'I', '2')
+									                         tipo_persona,
+									                     REPLACE (REPLACE (o.infderetadest, '/ROC/', ''),
+									                              '//',
+									                              ' ')
+									                         descripcion_motivo,
+									                     LPAD(co.CODACTIVIDACIIU , 5, '0') 
+									                         codigo_sector,
+									                     --nuevos campos segun la normativa
+									                     ganadero.fun_pgl_convert_tc_oficial (
+									                         o.op_moneda,
+									                         0,
+									                         ( -- OP_IMPORTE se eliminan estos cargos por obs se la asfi
+									                            --+ COMISION_ITF se eliminan estos cargos por obs se la asfi
+									                            MTO_CARGO
+									                          + MTO_FORMULARIO
+									                          + MTO_COMUNICACION
+									                          + MTO_OURSHA))
+									                         MONTO_TOTAL_COBRADOX_SERVICIO,
+									                     CASE
+									                         WHEN (((MTO_CARGO / OP_IMPORTE) * 100) &gt; 100) THEN 0
+									                         ELSE ROUND (((MTO_CARGO / OP_IMPORTE) * 100), 2)
+									                     END
+									                         PORCENTAJE_COMISION_EIF,
+									                     ganadero.fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                          0,
+									                                                          o.MTO_CARGO)
+									                         MONTO_COMISION_EIF,
+									                     0
+									                         PORCENTAJE_COMISION_BCB,
+									                     0
+									                         MONTO_COMISION_BCB,
+									                     ROUND (((MTO_OURSHA / OP_IMPORTE) * 100), 2)
+									                         PORCENTAJE_COMISION_TERCEROS,
+									                     ganadero.fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                          0,
+									                                                          o.MTO_OURSHA)
+									                         MONTO_COMISION_TERCEROS,
+									                     REPLACE (co.nombrecliente, ',', '')
+									                         DESCRIPCION_TERCEROS_COBRAN_COMISION,
+									                     o.ord_nrocli CodigoClienteOrdBen    
+									                FROM ordenespago o
+									                     LEFT JOIN cli_clientes co
+									                         ON     co.codigocliente = o.saldo_corresponsal
+									                            AND co.tz_lock = 0,
+									                     monedas     m,
+									                     cli_clientes c
+									                     LEFT JOIN GANADERO.cli_cod_act_ciiu ci
+									                         ON     c.codactividaciiu = ci.codactciiu
+									                            AND ci.tz_lock = 0
+									                     LEFT JOIN cli_grupos_act_ciiu gciu
+									                         ON gciu.codigo_grupo = ci.grupo AND gciu.tz_lock = 0
+									               WHERE     o.op_fecha &gt;=
+									                         TO_DATE (
+									                                '"+ @[User::fechaProceso]  +"',
+									                             'YYYYMMDD')
+									                     AND o.op_fecha &lt;=
+									                         TO_DATE (
+									                                '"+ @[User::fechaProceso]  +"',
+									                             'YYYYMMDD')
+									                     AND o.op_estado IN ('C',
+									                                         'B',
+									                                         'V',
+									                                         'P')
+									                     AND o.tz_lock = 0
+									                     AND o.ord_nrocli = c.codigocliente
+									                     AND o.op_moneda = m.c6399
+									                     AND o.tz_lock = 0
+									                     AND c.tz_lock = 0
+									                     AND m.tz_lock = 0
+									              UNION
+									              -- SELECT PARA ENVIADAS DEL EXTERIOR (REMESAS FAMILIARES)
+									              SELECT 
+														TIPO,
+														MOTIVO,
+														PAIS,
+														TB.MONEDA,
+														ENTIDAD_BANCARIA,
+														MONTO_MO,
+														MONTO_BS,
+														NRO_OPERACION,
+														FECHA_OPERACION,
+														PLAZA_PAGO,
+														NOMBRE_AGENCIA,
+														CORRESPONSAL,
+														SISTEMA,
+														TIPO_PERSONA,
+														DESCRIPCION_MOTIVO,
+														 LPAD( NVL(CODIGO_SECTOR,PER2.CAEDEC) , 5, '0')   CODIGO_SECTOR,
+														--CUENTA_ACRED,
+														MONTO_TOTAL_COBRADOX_SERVICIO,
+														PORCENTAJE_COMISION_EIF,
+														MONTO_COMISION_EIF,
+														PORCENTAJE_COMISION_BCB,
+														MONTO_COMISION_BCB,
+														PORCENTAJE_COMISION_TERCEROS,
+														MONTO_COMISION_TERCEROS,
+														DESCRIPCION_TERCEROS_COBRAN_COMISION,
+														CODIGOCLIENTEORDBEN
+									              FROM (
+									              SELECT '2'
+									                         tipo,
+									                     '11'
+									                         motivo,
+									                     (SELECT cp.codigoswift
+									                        FROM cli_paises cp
+									                       WHERE     r.codigo_pais = cp.codigopais
+									                             AND tz_lock = 0
+									                             AND ROWNUM = 1)
+									                         pais,
+									                     m.c6402
+									                         moneda,
+									                     'IBBGA'
+									                         entidad_bancaria,
+									                     t.impte_rec_remesa
+									                         monto_mo,
+									                     ganadero.fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                          0,
+									                                                          t.impte_rec_remesa)
+									                         monto_bs,
+									                     t.num_remesa
+									                         nro_operacion,
+									                     t.fecha_pagado
+									                         fecha_operacion,
+									                     LPAD (p.cod_plaza, 2, '0')
+									                         plaza_pago,
+									                     u.nombre_asfi
+									                         nombre_agencia,
+									                     REPLACE (r.nombre_remesadora, ',', '')
+									                         corresponsal,
+									                     DECODE (UPPER (TRIM (r.sist_propio)), 'S', 2, 1)
+									                        sistema,
+									                     '1'
+									                         tipo_persona,
+									                     ''
+									                         descripcion_motivo,
+									                    -- LPAD( PER.CAEDEC , 5, '0')  
+									                     PER.CAEDEC     
+									                         codigo_sector,
+									                         t.CUENTA_ACRED,
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                 ( --NVL (IMPTE_REC_REMESA, 0)
+									                                                  NVL (TARIFA_COBRADA, 0)--+ NVL (MONTO_ITF, 0)
+									                                                                         ))
+									                         MONTO_TOTAL_COBRADOX_SERVICIO,
+									                     CASE
+									                         WHEN (((TARIFA_COBRADA / IMPTE_REC_REMESA) * 100) &gt;
+									                               100)
+									                         THEN
+									                             0
+									                         ELSE
+									                             ROUND (
+									                                 ((TARIFA_COBRADA / IMPTE_REC_REMESA) * 100),
+									                                 2)
+									                     END
+									                         PORCENTAJE_COMISION_EIF,
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                 TARIFA_COBRADA)
+									                         MONTO_COMISION_EIF,
+									                     0
+									                         PORCENTAJE_COMISION_BCB,
+									                     0
+									                         MONTO_COMISION_BCB,
+									                     0
+									                         PORCENTAJE_COMISION_TERCEROS,
+									                     0
+									                         MONTO_COMISION_TERCEROS,
+									                     REPLACE (r.nombre_remesadora, ',', '')
+									                         DESCRIPCION_TERCEROS_COBRAN_COMISION,
+									                     0 CodigoClienteOrdBen
+									                FROM trf_ordenes    t	-- 121.861
+									                    INNER JOIN trf_remesadoras r ON r.num_remesadora = t.num_remesadora
+									                    INNER JOIN monedas        m ON t.mon_rec_remesa = m.c6399
+									                    INNER JOIN sucursales     u ON u.sucursal = t.agencia_pago
+									                    INNER JOIN plazas         p	ON p.cod_plaza = u.coddepartamento	
+									                --- 	121.861
+									                
+									               		LEFT JOIN (
+																SELECT 
+																	CASE 
+																		WHEN CODIGO_CAEDEC = '00000' THEN '99002'
+																		ELSE CODIGO_CAEDEC 
+																	END CAEDEC,
+																	NUMEROPERSONA NUMERO_PERSONA
+																FROM (
+																	SELECT 
+																		ROW_NUMBER() OVER (PARTITION BY per.NUMEROPERSONA ORDER BY NVL(c.CODACTIVIDACIIU, per.CODIGO_CIIU) DESC) fila,
+																		SUBSTR(LPAD(
+																			(CASE 
+																				WHEN c.CODACTIVIDACIIU IS NULL THEN per.CODIGO_CIIU
+																				WHEN per.CODIGO_CIIU IS NULL THEN '99002'
+																				WHEN LENGTH(per.CODIGO_CIIU) &lt; 4 OR LENGTH(c.CODACTIVIDACIIU) &lt; 4 THEN '99002'
+																				WHEN LENGTH(per.CODIGO_CIIU) = 0 OR LENGTH(c.CODACTIVIDACIIU) = 0 THEN '99002'
+																				ELSE to_char(c.CODACTIVIDACIIU)
+																			END), 5, '0'), -5) AS CODIGO_CAEDEC,
+																		per.NUMEROPERSONA
+																	FROM (
+																		-- Unificar datos de PERSONAFISICA y PERSONAJURIDICA
+																		SELECT NUMEROPERSONAFISICA AS NUMEROPERSONA, to_char(CODACTIVIDADCIIU) AS CODIGO_CIIU
+																		FROM GANADERO.CLI_PERSONASFISICAS 
+																				WHERE TZ_LOCK  = 0
+																		UNION ALL
+																		SELECT NUMEROPERSONAJURIDICA AS NUMEROPERSONA, to_char(CODIGOCIIU) AS CODIGO_CIIU
+																		FROM GANADERO.CLI_PERSONASJURIDICAS 
+																		WHERE TZ_LOCK  = 0
+																	) per
+																	LEFT JOIN GANADERO.CLI_CLIENTEPERSONA  cp 
+																		ON per.NUMEROPERSONA = cp.NUMEROPERSONA AND cp.TITULARIDAD = 'T' AND cp.TZ_LOCK = 0
+																	LEFT JOIN GANADERO.CLI_CLIENTES c 
+																		ON c.CODIGOCLIENTE = cp.CODIGOCLIENTE AND cp.TZ_LOCK = 0
+																) tt
+																WHERE tt.fila = 1
+										               		) PER ON PER.NUMERO_PERSONA = t.nro_pers_destin	
+									                WHERE t.estado = 3
+									                     AND t.fecha_pagado &gt;=
+									                         TO_DATE (
+									                                '"+ @[User::fechaProceso]  +"',
+									                             'YYYYMMDD')
+									                     AND t.fecha_pagado &lt;=
+									                         TO_DATE (
+									                                '"+ @[User::fechaProceso]  +"',
+									                             'YYYYMMDD')
+									                     AND t.tipo_remesa = 3
+									                     AND t.tz_lock = 0
+									                     AND r.tz_lock = 0
+									                     AND m.tz_lock = 0
+									                     AND u.tz_lock = 0
+									                     AND p.tz_lock = 0) TB
+									           LEFT JOIN SALDOS s ON s.CUENTA = CUENTA_ACRED AND s.cuenta &lt;&gt; 0 AND C1785 in (2,3,4)
+									           LEFT JOIN CLI_CLIENTEPERSONA cp ON cp.CODIGOCLIENTE = s.C1803 AND cp.TITULARIDAD  = 'T'
+									           LEFT JOIN (
+									               			SELECT 
+															    CASE 
+															        WHEN CODIGO_CAEDEC = '00000' THEN '99002'
+															        ELSE CODIGO_CAEDEC 
+															    END CAEDEC,
+															    NUMEROPERSONA NUMERO_PERSONA
+															FROM (
+															    SELECT 
+															        ROW_NUMBER() OVER (PARTITION BY per.NUMEROPERSONA ORDER BY NVL(c.CODACTIVIDACIIU, per.CODIGO_CIIU) DESC) fila,
+															        SUBSTR(LPAD(
+															            (CASE 
+															                WHEN c.CODACTIVIDACIIU IS NULL THEN per.CODIGO_CIIU
+															                WHEN per.CODIGO_CIIU IS NULL THEN '99002'
+															                WHEN LENGTH(per.CODIGO_CIIU) &lt; 4 OR LENGTH(c.CODACTIVIDACIIU) &lt; 4 THEN '99002'
+															                WHEN LENGTH(per.CODIGO_CIIU) = 0 OR LENGTH(c.CODACTIVIDACIIU) = 0 THEN '99002'
+															                ELSE to_char(c.CODACTIVIDACIIU)
+															            END), 5, '0'), -5) AS CODIGO_CAEDEC,
+															        per.NUMEROPERSONA
+															    FROM (
+															        -- Unificar datos de PERSONAFISICA y PERSONAJURIDICA
+															        SELECT NUMEROPERSONAFISICA AS NUMEROPERSONA, to_char(CODACTIVIDADCIIU) AS CODIGO_CIIU
+															        FROM GANADERO.CLI_PERSONASFISICAS 
+															                WHERE TZ_LOCK  = 0
+															        UNION ALL
+															        SELECT NUMEROPERSONAJURIDICA AS NUMEROPERSONA, to_char(CODIGOCIIU) AS CODIGO_CIIU
+															        FROM GANADERO.CLI_PERSONASJURIDICAS 
+															        WHERE TZ_LOCK  = 0
+															    ) per
+															    LEFT JOIN GANADERO.CLI_CLIENTEPERSONA  cp 
+															        ON per.NUMEROPERSONA = cp.NUMEROPERSONA AND cp.TITULARIDAD = 'T' AND cp.TZ_LOCK = 0
+															    LEFT JOIN GANADERO.CLI_CLIENTES c 
+															        ON c.CODIGOCLIENTE = cp.CODIGOCLIENTE AND cp.TZ_LOCK = 0
+															) tt
+															WHERE tt.fila = 1
+										               		) PER2 ON PER2.NUMERO_PERSONA = cp.NUMEROPERSONA 	
+									              UNION
+									              -- 1 SISTEMA
+									              -- SELECT PARA RECIBIDAS DEL EXTERIOR (REMESAS FAMILIARES)
+									               SELECT '2'
+									                         tipo,
+									                     o.cod_asfi
+									                     --case 
+														 -- when o.cod_asfi = 12 then '14'  
+														 -- else o.cod_asfi end    
+														   motivo,
+									                     DECODE (
+									                         NVL (o.ord_bancopais, 0),
+									                         0, SUBSTR (o.corr_bancocod, 5, 2),
+									                         (SELECT codigoswift
+									                            FROM cli_paises
+									                           WHERE     codigopais = NVL (o.ord_bancopais, 0)
+									                                 AND ROWNUM = 1))
+									                         pais,
+									                     m.c6402
+									                         moneda,
+									                     'IBBGA'
+									                         entidadbancaria,
+									                     o.op_importe
+									                         monto_mo,
+									                     ganadero.fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                          0,
+									                                                          o.op_importe)
+									                         monto_bs,
+									                     o.op_numero
+									                         nro_operacion,
+									                     o.fecha_pago
+									                         fecha_operacion,
+									                     LPAD (p.cod_plaza, 2, '0')
+									                         plaza_pago,
+									                     u.nombre_asfi
+									                         nombre_agencia,
+									                     -- Se adicion? la concatenaci?n de los valores XXX debido a que por cambios el formato del Swift
+									                     -- a veces se recibe por ej. el valor CHASUS33 en lugar de CHASUS33XXX
+									                     (SELECT REPLACE (nombrebanco, ',', '')
+									                        FROM bicindex
+									                       WHERE     (   direccionbic = o.corr_bancocod
+									                                  OR direccionbic = o.corr_bancocod || 'XXX')
+									                             AND ROWNUM = 1)
+									                         corresponsal,
+									                     1
+									                         sistema,
+									                     DECODE (c2.tipo,
+									                             'E', '1',
+									                             'U', '1',
+									                             'J', '2',
+									                             'F', '1',
+									                             'I', '2')
+									                         tipo_persona,
+									                     REPLACE (REPLACE (o.t70, '/ROC/', ''), '//', ' ')
+									                         descripcion_motivo,
+									                     LPAD( NVL(c2.CODACTIVIDACIIU,c.CODACTIVIDACIIU ) , 5, '0')   
+									                         codigo_sector,
+									                     fun_pgl_convert_tc_oficial (
+									                         o.op_moneda,
+									                         0,
+									                         ((                              --NVL (OP_IMPORTE, 0)
+									                           NVL (OP_MONTO_COMISION, 0)--+ NVL (ITF, 0)
+									                                                     )))
+									                         MONTO_TOTAL_COBRADOX_SERVICIO,
+									                     CASE
+									                         WHEN (((OP_MONTO_COMISION / OP_IMPORTE) * 100) &gt; 100)
+									                         THEN
+									                             0
+									                         ELSE
+									                             ROUND (((OP_MONTO_COMISION / OP_IMPORTE) * 100),
+									                                    2)
+									                     END
+									                         PORCENTAJE_COMISION_EIF,
+									                     fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                 0,
+									                                                 OP_MONTO_COMISION)
+									                         MONTO_COMISION_EIF,
+									                     0
+									                         PORCENTAJE_COMISION_BCB,
+									                     0
+									                         MONTO_COMISION_BCB,
+									                     0
+									                         PORCENTAJE_COMISION_TERCEROS,
+									                     0
+									                         MONTO_COMISION_TERCEROS,
+									                     (SELECT REPLACE (nombrebanco, ',', '')
+									                        FROM bicindex
+									                       WHERE     (   direccionbic = o.corr_bancocod
+									                                  OR direccionbic = o.corr_bancocod || 'XXX')
+									                             AND ROWNUM = 1)
+									                         DESCRIPCION_TERCEROS_COBRAN_COMISION,
+									                       o.BEF_NROCLI CodigoClienteOrdBen
+									                FROM ordenesrecibidas o,
+									                     saldos          s,
+									                     saldos          s2,
+									                     monedas         m,
+									                     sucursales      u,
+									                     plazas          p,
+									                     cli_clientes    c2,
+									                     cli_clientes    c
+									                     LEFT JOIN cli_cod_act_ciiu ci
+									                         ON     c.codactividaciiu = ci.codactciiu
+									                            AND ci.tz_lock = 0
+									                     LEFT JOIN cli_grupos_act_ciiu gciu
+									                         ON gciu.codigo_grupo = ci.grupo AND gciu.tz_lock = 0
+									               WHERE   
+									               			 o.fecha_pago &gt;=
+									                         TO_DATE (
+									                                '"+ @[User::fechaProceso]  +"',
+									                             'YYYYMMDD')
+									                     AND o.fecha_pago &lt;=
+									                         TO_DATE (
+									                                '"+ @[User::fechaProceso]  +"',
+									                             'YYYYMMDD')
+									                     AND o.op_estado = 9
+									                     AND o.tz_lock = 0
+									                     AND o.cuenta_jts_oid = s.jts_oid
+									                     AND o.jts_oid_corresponsal = s2.jts_oid
+									                     AND s2.c1803 = c.codigocliente
+									                      AND o.BEF_NROCLI=c2.codigocliente
+									                     AND m.c6399 = o.op_moneda
+									                     AND u.sucursal = s.sucursal
+									                     AND p.cod_plaza = u.coddepartamento
+									                     AND o.tz_lock = 0
+									                     AND s.tz_lock = 0
+									                     AND c.tz_lock = 0
+									                     AND m.tz_lock = 0
+									              UNION
+									              --SELECT PARA RECIBIDAS DEL EXTERIOR
+                                SELECT '1'
+									                         tipo,
+									                     '9'
+									                         motivo,
+									                     --T.PAIS_DESTINO PAIS,
+									                     (SELECT codigoswift
+									                        FROM cli_paises
+									                       WHERE     UPPER (TRIM (nombrepais)) =
+									                                 UPPER (TRIM (t.pais_destino))
+									                             AND tz_lock = 0
+									                             AND ROWNUM = 1)
+									                         pais,                                   --- PENDIENTE
+									                     m.c6402
+									                         moneda,
+									                     'IBBGA'
+									                         entidad_bancaria,
+									                     t.impte_rec_remesa
+									                         monto_mo,
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                 t.impte_rec_remesa)
+									                         monto_bs,
+									                     t.num_remesa
+									                         nro_operacion,
+									                     t.fecha_recibida
+									                         fecha_operacion,
+									                     NULL
+									                         plaza_pago,
+									                     ''
+									                         nombre_agencia,
+									                     REPLACE (r.nombre_remesadora, ',', '')
+									                         corresponsal,
+									                     DECODE (UPPER (TRIM (r.sist_propio)), 'S', 2, 1)
+									                         sistema,
+									                     '1'
+									                         tipo_persona,
+									                     ''
+									                         descripcion_motivo,
+									                     LPAD( nvl(cf.CODACTIVIDADCIIU,cj.CODIGOCIIU) , 5, '0') 
+									                         codigo_sector,
+									                     
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                
+									                                                 (TARIFA_COBRADA))
+									                         MONTO_TOTAL_COBRADOX_SERVICIO,
+									                     CASE
+									                         WHEN (((TARIFA_COBRADA / IMPTE_REC_REMESA) * 100) &gt;
+									                               100)
+									                         THEN
+									                             0
+									                         ELSE
+									                             ROUND (
+									                                 ((TARIFA_COBRADA / IMPTE_REC_REMESA) * 100),
+									                                 2)
+									                     END
+									                         PORCENTAJE_COMISION_EIF,
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                 TARIFA_COBRADA)
+									                         MONTO_COMISION_EIF,
+									                     0
+									                         PORCENTAJE_COMISION_BCB,
+									                     0
+									                         MONTO_COMISION_BCB,
+									                     0
+									                         PORCENTAJE_COMISION_TERCEROS,
+									                     0
+									                         MONTO_COMISION_TERCEROS,
+									                     REPLACE (r.nombre_remesadora, ',', '')
+									                         DESCRIPCION_TERCEROS_COBRAN_COMISION,
+									                     0 CodigoClienteOrdBen
+									                FROM trf_ordenes t
+									                	INNER JOIN trf_remesadoras r ON r.num_remesadora = t.num_remesadora
+									                	INNER JOIN monedas m ON t.mon_rec_remesa = m.c6399		--- 677
+									                	LEFT JOIN GANADERO.CLI_PERSONASFISICAS cf ON cf.NUMEROPERSONAFISICA  = t.NRO_PERS_EMISOR 
+									                	LEFT JOIN GANADERO.CLI_PERSONASJURIDICAS cj ON cj.NUMEROPERSONAJURIDICA  = t.NRO_PERS_EMISOR
+									               WHERE     t.estado = 3
+									                     AND t.fecha_pagado &gt;=
+									                         TO_DATE (
+									                                '"+ @[User::fechaProceso]  +"',
+									                             'YYYYMMDD')
+									                     AND t.fecha_pagado &lt;=
+									                         TO_DATE (
+									                                '"+ @[User::fechaProceso]   +"',
+									                             'YYYYMMDD')
+									                     AND t.tipo_remesa = 2
+									                     AND t.tz_lock = 0
+									                     AND m.tz_lock = 0
+									                     AND r.tz_lock = 0
+									                     
+									   ) t 
+			)t ORDER BY tipo, fecha_operacion
+	)T"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor de secuencias\Data Flow Task\Flat File Destination"
+                  componentClassID="Microsoft.FlatFileDestination"
+                  contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Destination"
+                  localeId="16394"
+                  name="Flat File Destination"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether the data will overwrite or append to the destination file."
+                      name="Overwrite">true</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the text to write to the destination file before any data is written."
+                      expressionType="Notify"
+                      name="Header" />
+                    <property
+                      dataType="System.Boolean"
+                      description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                      name="EscapeQualifier">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de secuencias\Data Flow Task\Flat File Destination.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[D011]"
+                      connectionManagerRefId="Package.ConnectionManagers[D011]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de secuencias\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input]"
+                      hasSideEffects="true"
+                      name="Flat File Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de secuencias\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[CONCATENADO]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="CONCATENADO"
+                          externalMetadataColumnId="Package\Contenedor de secuencias\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CONCATENADO]"
+                          lineageId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[CONCATENADO]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de secuencias\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CONCATENADO]"
+                          dataType="wstr"
+                          length="4000"
+                          name="CONCATENADO" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+                  description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+                  name="Origen de ADO NET"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">  SELECT   
+  			  '"'||	TIPO
+		|| '","' ||	MOTIVO
+		|| '","' ||	DESCRIPCION_MOTIVO
+		|| '","' ||	TIPO_PERSONA
+		|| '","' || CODIGO_SECTOR
+		|| '","' || PAIS
+		|| '","' || MONEDA
+		|| '","' || ENTIDAD_BANCARIA
+		|| '","' || MONTO_MO
+		|| '","' || MONTO_BS
+		|| '","' || NRO_OPERACION
+		|| '","' || FECHA_OPERACION
+		|| '","' || PLAZA_PAGO
+		|| '","' || NOMBRE_AGENCIA
+		|| '","' || CORRESPONSAL
+		|| '","' || SISTEMA
+		|| '","' || MONTO_TOTAL_COBRADOX_SERVICIO
+		|| '","' || CASE WHEN MONTO_COMISION_EIF_AUX &lt;=780  
+					THEN '0' 
+					ELSE  PORCENTAJE_COMISION_EIF 
+					END 
+		|| '","' ||CASE WHEN MONTO_COMISION_EIF_AUX &lt;=780   
+						THEN MONTO_COMISION_EIF
+						ELSE CASE WHEN MONTO_COMISION_EIF !='0' 
+								  THEN '0'
+								 ELSE   MONTO_COMISION_EIF 
+							  END 
+						END
+		|| '","' || PORCENTAJE_COMISION_BCB
+		|| '","' || MONTO_COMISION_BCB
+		|| '","' || PORCENTAJE_COMISION_TERCEROS
+		|| '","' || MONTO_COMISION_TERCEROS
+		|| '","' || DESCRIPCION_TERCEROS_COBRAN_COMISION
+		|| '","' || TIPOSOLICITANTE
+		|| '"' AS concatenado
+
+FROM (
+		SELECT    
+		              t.tipo,
+		             TRIM (SUBSTR (t.motivo, 0, 2))motivo,
+		             REPLACE (
+		                    CASE
+		                        WHEN t.motivo = '9'
+		                        THEN
+		                            NVL (
+		                                REPLACE (
+		                                    REPLACE (
+		                                        REPLACE (
+		                                            REPLACE (t.descripcion_motivo,
+		                                                     CHR (13),
+		                                                     ''),
+		                                            CHR (10),
+		                                            ''),
+		                                        '  ',
+		                                        ' '),
+		                                    '',
+		                                    'REMESA FAMILIAR'),
+		                                'REMESA FAMILIAR')
+		                        ELSE
+		                            REPLACE (
+		                                REPLACE (
+		                                    REPLACE (t.descripcion_motivo,
+		                                             CHR (10),
+		                                             ''),
+		                                    CHR (13),
+		                                    ''),
+		                                '  ',
+		                                ' ')
+		                    END,
+		                    CHR (39),
+		                    ' ') descripcion_motivo,
+		            
+		             CASE WHEN t.motivo = '9' THEN '1' ELSE t.tipo_persona END tipo_persona,
+		             
+		              t.codigo_sector,
+		             
+		              TRIM (SUBSTR (t.pais, 0, 2)) pais,
+		
+		            TRIM (SUBSTR (t.moneda, 0, 3))moneda ,
+		            TRIM (t.entidad_bancaria) entidad_bancaria,
+					TRIM (TO_CHAR (t.monto_mo, '999999999999990.99'))monto_mo,
+		            TRIM (TO_CHAR (t.monto_bs, '999999999999990.99'))monto_bs,
+		              t.nro_operacion,
+		             TO_CHAR (t.fecha_operacion, 'YYYY-MM-DD') fecha_operacion,
+					 TRIM (SUBSTR (t.plaza_pago, 0, 2)) plaza_pago,
+		              TRIM (SUBSTR (t.nombre_agencia, 0, 200))nombre_agencia,
+		              SUBSTR (t.corresponsal, 0, 30)corresponsal ,
+		               t.sistema,
+		             TRIM (
+		                    TO_CHAR (MONTO_TOTAL_COBRADOX_SERVICIO,
+		                             '999999999999990.99')) MONTO_TOTAL_COBRADOX_SERVICIO,
+		             CASE
+		                    --WHEN PORCENTAJE_COMISION_EIF != 0 AND PORCENTAJE_COMISION_EIF&lt;=99.99
+		                    WHEN     PORCENTAJE_COMISION_EIF != 0
+		                         AND PORCENTAJE_COMISION_EIF &lt;= 2.5 --este es la tasa maxima que se cobra
+		                    THEN
+		                        TRIM (
+		                            TO_CHAR (PORCENTAJE_COMISION_EIF,
+		                                     '999999999999990.99'))
+		                    ELSE
+		                        '0'
+		                END PORCENTAJE_COMISION_EIF,
+		              CASE
+		                    WHEN MONTO_COMISION_EIF != 0
+		                    THEN
+		                        TRIM (
+		                            TO_CHAR (MONTO_COMISION_EIF, '999999999999990.99'))
+		                    ELSE
+		                        '0'
+		                END MONTO_COMISION_EIF,
+					 PORCENTAJE_COMISION_BCB ,
+		 			 MONTO_COMISION_BCB,
+					 CASE
+		                    --WHEN PORCENTAJE_COMISION_TERCEROS != 0 AND PORCENTAJE_COMISION_TERCEROS&lt;=99.99
+		                    WHEN     PORCENTAJE_COMISION_TERCEROS != 0
+		                         AND PORCENTAJE_COMISION_TERCEROS &lt;= 5
+		                    THEN
+		                        --TRIM (
+		                        --    TO_CHAR (PORCENTAJE_COMISION_TERCEROS,
+		                        --             '999999999999990.99'))
+		                        '0'
+		                    ELSE
+		                        '0'
+		                END  PORCENTAJE_COMISION_TERCEROS,
+		               CASE
+		                    WHEN MONTO_COMISION_TERCEROS != 0
+		                    THEN
+		                        TRIM (
+		                            TO_CHAR (MONTO_COMISION_TERCEROS,
+		                                     '999999999999990.99'))
+		                    ELSE
+		                        '0'
+		                END MONTO_COMISION_TERCEROS,
+		
+		              CASE
+		                    WHEN MONTO_COMISION_TERCEROS != 0
+		                    THEN
+		                        DESCRIPCION_TERCEROS_COBRAN_COMISION
+		                    ELSE
+		                        ''
+		                END DESCRIPCION_TERCEROS_COBRAN_COMISION ,
+		
+					  TIPOSOLICITANTE ,
+					  MONTO_COMISION_EIF MONTO_COMISION_EIF_AUX
+		             
+		        FROM (
+					SELECT TIPO, MOTIVO, PAIS, MONEDA, ENTIDAD_BANCARIA, MONTO_MO, MONTO_BS, NRO_OPERACION, FECHA_OPERACION, PLAZA_PAGO, NOMBRE_AGENCIA, CORRESPONSAL, SISTEMA, TIPO_PERSONA, DESCRIPCION_MOTIVO, 
+					case when CODIGO_SECTOR ='00000' then '99002' else CODIGO_SECTOR end CODIGO_SECTOR, 
+					MONTO_TOTAL_COBRADOX_SERVICIO, PORCENTAJE_COMISION_EIF, MONTO_COMISION_EIF, PORCENTAJE_COMISION_BCB, MONTO_COMISION_BCB, PORCENTAJE_COMISION_TERCEROS, MONTO_COMISION_TERCEROS, DESCRIPCION_TERCEROS_COBRAN_COMISION, CODIGOCLIENTEORDBEN,
+					CASE WHEN  nvl(CodigoClienteOrdBen,0)=0 
+									THEN  '1'
+									ELSE  CASE WHEN nvl(CodigoClienteOrdBen,0)=10008174
+												THEN  '3'
+												ELSE  CASE WHEN   CodigoClienteOrdBen  IN (205,213,248,272,280,302,310,329,200948,237906,271608,536474,993506,221,274445)
+															THEN '2'
+															ELSE '1'
+													   END 
+										  END 
+								 END TIPOSOLICITANTE 
+									FROM (	SELECT '1'
+									                         tipo,
+									                     o.cod_asfi
+									                         motivo,
+									                     (SELECT codigoswift
+									                        FROM cli_paises
+									                       WHERE codigopais = NVL (o.bef_pais, 0))
+									                         pais,
+									                     m.c6402
+									                         moneda,
+									                     'IBBGA'
+									                         entidad_bancaria,
+									                     o.op_importe
+									                         monto_mo,
+									                     ganadero.fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                          0,
+									                                                          o.op_importe)
+									                         monto_bs,
+									                     o.op_numero
+									                         nro_operacion,
+									                     o.op_fecha
+									                         fecha_operacion,
+									                     NULL
+									                         plaza_pago,
+									                     ''
+									                         nombre_agencia,
+									                     REPLACE (co.nombrecliente, ',', '')
+									                         corresponsal,
+									                     1
+									                         sistema,
+									                     DECODE (c.tipo,
+									                             'E', '1',
+									                             'U', '1',
+									                             'J', '2',
+									                             'F', '1',
+									                             'I', '2')
+									                         tipo_persona,
+									                     REPLACE (REPLACE (o.infderetadest, '/ROC/', ''),
+									                              '//',
+									                              ' ')
+									                         descripcion_motivo,
+									                     LPAD(co.CODACTIVIDACIIU , 5, '0') 
+									                         codigo_sector,
+									                     --nuevos campos segun la normativa
+									                     ganadero.fun_pgl_convert_tc_oficial (
+									                         o.op_moneda,
+									                         0,
+									                         ( -- OP_IMPORTE se eliminan estos cargos por obs se la asfi
+									                            --+ COMISION_ITF se eliminan estos cargos por obs se la asfi
+									                            MTO_CARGO
+									                          + MTO_FORMULARIO
+									                          + MTO_COMUNICACION
+									                          + MTO_OURSHA))
+									                         MONTO_TOTAL_COBRADOX_SERVICIO,
+									                     CASE
+									                         WHEN (((MTO_CARGO / OP_IMPORTE) * 100) &gt; 100) THEN 0
+									                         ELSE ROUND (((MTO_CARGO / OP_IMPORTE) * 100), 2)
+									                     END
+									                         PORCENTAJE_COMISION_EIF,
+									                     ganadero.fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                          0,
+									                                                          o.MTO_CARGO)
+									                         MONTO_COMISION_EIF,
+									                     0
+									                         PORCENTAJE_COMISION_BCB,
+									                     0
+									                         MONTO_COMISION_BCB,
+									                     ROUND (((MTO_OURSHA / OP_IMPORTE) * 100), 2)
+									                         PORCENTAJE_COMISION_TERCEROS,
+									                     ganadero.fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                          0,
+									                                                          o.MTO_OURSHA)
+									                         MONTO_COMISION_TERCEROS,
+									                     REPLACE (co.nombrecliente, ',', '')
+									                         DESCRIPCION_TERCEROS_COBRAN_COMISION,
+									                     o.ord_nrocli CodigoClienteOrdBen    
+									                FROM ordenespago o
+									                     LEFT JOIN cli_clientes co
+									                         ON     co.codigocliente = o.saldo_corresponsal
+									                            AND co.tz_lock = 0,
+									                     monedas     m,
+									                     cli_clientes c
+									                     LEFT JOIN GANADERO.cli_cod_act_ciiu ci
+									                         ON     c.codactividaciiu = ci.codactciiu
+									                            AND ci.tz_lock = 0
+									                     LEFT JOIN cli_grupos_act_ciiu gciu
+									                         ON gciu.codigo_grupo = ci.grupo AND gciu.tz_lock = 0
+									               WHERE     o.op_fecha &gt;=
+									                         TO_DATE (
+									                                '',
+									                             'YYYYMMDD')
+									                     AND o.op_fecha &lt;=
+									                         TO_DATE (
+									                                '',
+									                             'YYYYMMDD')
+									                     AND o.op_estado IN ('C',
+									                                         'B',
+									                                         'V',
+									                                         'P')
+									                     AND o.tz_lock = 0
+									                     AND o.ord_nrocli = c.codigocliente
+									                     AND o.op_moneda = m.c6399
+									                     AND o.tz_lock = 0
+									                     AND c.tz_lock = 0
+									                     AND m.tz_lock = 0
+									              UNION
+									              -- SELECT PARA ENVIADAS DEL EXTERIOR (REMESAS FAMILIARES)
+									              SELECT 
+														TIPO,
+														MOTIVO,
+														PAIS,
+														TB.MONEDA,
+														ENTIDAD_BANCARIA,
+														MONTO_MO,
+														MONTO_BS,
+														NRO_OPERACION,
+														FECHA_OPERACION,
+														PLAZA_PAGO,
+														NOMBRE_AGENCIA,
+														CORRESPONSAL,
+														SISTEMA,
+														TIPO_PERSONA,
+														DESCRIPCION_MOTIVO,
+														 LPAD( NVL(CODIGO_SECTOR,PER2.CAEDEC) , 5, '0')   CODIGO_SECTOR,
+														--CUENTA_ACRED,
+														MONTO_TOTAL_COBRADOX_SERVICIO,
+														PORCENTAJE_COMISION_EIF,
+														MONTO_COMISION_EIF,
+														PORCENTAJE_COMISION_BCB,
+														MONTO_COMISION_BCB,
+														PORCENTAJE_COMISION_TERCEROS,
+														MONTO_COMISION_TERCEROS,
+														DESCRIPCION_TERCEROS_COBRAN_COMISION,
+														CODIGOCLIENTEORDBEN
+									              FROM (
+									              SELECT '2'
+									                         tipo,
+									                     '11'
+									                         motivo,
+									                     (SELECT cp.codigoswift
+									                        FROM cli_paises cp
+									                       WHERE     r.codigo_pais = cp.codigopais
+									                             AND tz_lock = 0
+									                             AND ROWNUM = 1)
+									                         pais,
+									                     m.c6402
+									                         moneda,
+									                     'IBBGA'
+									                         entidad_bancaria,
+									                     t.impte_rec_remesa
+									                         monto_mo,
+									                     ganadero.fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                          0,
+									                                                          t.impte_rec_remesa)
+									                         monto_bs,
+									                     t.num_remesa
+									                         nro_operacion,
+									                     t.fecha_pagado
+									                         fecha_operacion,
+									                     LPAD (p.cod_plaza, 2, '0')
+									                         plaza_pago,
+									                     u.nombre_asfi
+									                         nombre_agencia,
+									                     REPLACE (r.nombre_remesadora, ',', '')
+									                         corresponsal,
+									                     DECODE (UPPER (TRIM (r.sist_propio)), 'S', 2, 1)
+									                        sistema,
+									                     '1'
+									                         tipo_persona,
+									                     ''
+									                         descripcion_motivo,
+									                    -- LPAD( PER.CAEDEC , 5, '0')  
+									                     PER.CAEDEC     
+									                         codigo_sector,
+									                         t.CUENTA_ACRED,
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                 ( --NVL (IMPTE_REC_REMESA, 0)
+									                                                  NVL (TARIFA_COBRADA, 0)--+ NVL (MONTO_ITF, 0)
+									                                                                         ))
+									                         MONTO_TOTAL_COBRADOX_SERVICIO,
+									                     CASE
+									                         WHEN (((TARIFA_COBRADA / IMPTE_REC_REMESA) * 100) &gt;
+									                               100)
+									                         THEN
+									                             0
+									                         ELSE
+									                             ROUND (
+									                                 ((TARIFA_COBRADA / IMPTE_REC_REMESA) * 100),
+									                                 2)
+									                     END
+									                         PORCENTAJE_COMISION_EIF,
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                 TARIFA_COBRADA)
+									                         MONTO_COMISION_EIF,
+									                     0
+									                         PORCENTAJE_COMISION_BCB,
+									                     0
+									                         MONTO_COMISION_BCB,
+									                     0
+									                         PORCENTAJE_COMISION_TERCEROS,
+									                     0
+									                         MONTO_COMISION_TERCEROS,
+									                     REPLACE (r.nombre_remesadora, ',', '')
+									                         DESCRIPCION_TERCEROS_COBRAN_COMISION,
+									                     0 CodigoClienteOrdBen
+									                FROM trf_ordenes    t	-- 121.861
+									                    INNER JOIN trf_remesadoras r ON r.num_remesadora = t.num_remesadora
+									                    INNER JOIN monedas        m ON t.mon_rec_remesa = m.c6399
+									                    INNER JOIN sucursales     u ON u.sucursal = t.agencia_pago
+									                    INNER JOIN plazas         p	ON p.cod_plaza = u.coddepartamento	
+									                --- 	121.861
+									                
+									               		LEFT JOIN (
+																SELECT 
+																	CASE 
+																		WHEN CODIGO_CAEDEC = '00000' THEN '99002'
+																		ELSE CODIGO_CAEDEC 
+																	END CAEDEC,
+																	NUMEROPERSONA NUMERO_PERSONA
+																FROM (
+																	SELECT 
+																		ROW_NUMBER() OVER (PARTITION BY per.NUMEROPERSONA ORDER BY NVL(c.CODACTIVIDACIIU, per.CODIGO_CIIU) DESC) fila,
+																		SUBSTR(LPAD(
+																			(CASE 
+																				WHEN c.CODACTIVIDACIIU IS NULL THEN per.CODIGO_CIIU
+																				WHEN per.CODIGO_CIIU IS NULL THEN '99002'
+																				WHEN LENGTH(per.CODIGO_CIIU) &lt; 4 OR LENGTH(c.CODACTIVIDACIIU) &lt; 4 THEN '99002'
+																				WHEN LENGTH(per.CODIGO_CIIU) = 0 OR LENGTH(c.CODACTIVIDACIIU) = 0 THEN '99002'
+																				ELSE to_char(c.CODACTIVIDACIIU)
+																			END), 5, '0'), -5) AS CODIGO_CAEDEC,
+																		per.NUMEROPERSONA
+																	FROM (
+																		-- Unificar datos de PERSONAFISICA y PERSONAJURIDICA
+																		SELECT NUMEROPERSONAFISICA AS NUMEROPERSONA, to_char(CODACTIVIDADCIIU) AS CODIGO_CIIU
+																		FROM GANADERO.CLI_PERSONASFISICAS 
+																				WHERE TZ_LOCK  = 0
+																		UNION ALL
+																		SELECT NUMEROPERSONAJURIDICA AS NUMEROPERSONA, to_char(CODIGOCIIU) AS CODIGO_CIIU
+																		FROM GANADERO.CLI_PERSONASJURIDICAS 
+																		WHERE TZ_LOCK  = 0
+																	) per
+																	LEFT JOIN GANADERO.CLI_CLIENTEPERSONA  cp 
+																		ON per.NUMEROPERSONA = cp.NUMEROPERSONA AND cp.TITULARIDAD = 'T' AND cp.TZ_LOCK = 0
+																	LEFT JOIN GANADERO.CLI_CLIENTES c 
+																		ON c.CODIGOCLIENTE = cp.CODIGOCLIENTE AND cp.TZ_LOCK = 0
+																) tt
+																WHERE tt.fila = 1
+										               		) PER ON PER.NUMERO_PERSONA = t.nro_pers_destin	
+									                WHERE t.estado = 3
+									                     AND t.fecha_pagado &gt;=
+									                         TO_DATE (
+									                                '',
+									                             'YYYYMMDD')
+									                     AND t.fecha_pagado &lt;=
+									                         TO_DATE (
+									                                '',
+									                             'YYYYMMDD')
+									                     AND t.tipo_remesa = 3
+									                     AND t.tz_lock = 0
+									                     AND r.tz_lock = 0
+									                     AND m.tz_lock = 0
+									                     AND u.tz_lock = 0
+									                     AND p.tz_lock = 0) TB
+									           LEFT JOIN SALDOS s ON s.CUENTA = CUENTA_ACRED AND s.cuenta &lt;&gt; 0 AND C1785 in (2,3,4)
+									           LEFT JOIN CLI_CLIENTEPERSONA cp ON cp.CODIGOCLIENTE = s.C1803 AND cp.TITULARIDAD  = 'T'
+									           LEFT JOIN (
+									               			SELECT 
+															    CASE 
+															        WHEN CODIGO_CAEDEC = '00000' THEN '99002'
+															        ELSE CODIGO_CAEDEC 
+															    END CAEDEC,
+															    NUMEROPERSONA NUMERO_PERSONA
+															FROM (
+															    SELECT 
+															        ROW_NUMBER() OVER (PARTITION BY per.NUMEROPERSONA ORDER BY NVL(c.CODACTIVIDACIIU, per.CODIGO_CIIU) DESC) fila,
+															        SUBSTR(LPAD(
+															            (CASE 
+															                WHEN c.CODACTIVIDACIIU IS NULL THEN per.CODIGO_CIIU
+															                WHEN per.CODIGO_CIIU IS NULL THEN '99002'
+															                WHEN LENGTH(per.CODIGO_CIIU) &lt; 4 OR LENGTH(c.CODACTIVIDACIIU) &lt; 4 THEN '99002'
+															                WHEN LENGTH(per.CODIGO_CIIU) = 0 OR LENGTH(c.CODACTIVIDACIIU) = 0 THEN '99002'
+															                ELSE to_char(c.CODACTIVIDACIIU)
+															            END), 5, '0'), -5) AS CODIGO_CAEDEC,
+															        per.NUMEROPERSONA
+															    FROM (
+															        -- Unificar datos de PERSONAFISICA y PERSONAJURIDICA
+															        SELECT NUMEROPERSONAFISICA AS NUMEROPERSONA, to_char(CODACTIVIDADCIIU) AS CODIGO_CIIU
+															        FROM GANADERO.CLI_PERSONASFISICAS 
+															                WHERE TZ_LOCK  = 0
+															        UNION ALL
+															        SELECT NUMEROPERSONAJURIDICA AS NUMEROPERSONA, to_char(CODIGOCIIU) AS CODIGO_CIIU
+															        FROM GANADERO.CLI_PERSONASJURIDICAS 
+															        WHERE TZ_LOCK  = 0
+															    ) per
+															    LEFT JOIN GANADERO.CLI_CLIENTEPERSONA  cp 
+															        ON per.NUMEROPERSONA = cp.NUMEROPERSONA AND cp.TITULARIDAD = 'T' AND cp.TZ_LOCK = 0
+															    LEFT JOIN GANADERO.CLI_CLIENTES c 
+															        ON c.CODIGOCLIENTE = cp.CODIGOCLIENTE AND cp.TZ_LOCK = 0
+															) tt
+															WHERE tt.fila = 1
+										               		) PER2 ON PER2.NUMERO_PERSONA = cp.NUMEROPERSONA 	
+									              UNION
+									              -- 1 SISTEMA
+									              -- SELECT PARA RECIBIDAS DEL EXTERIOR (REMESAS FAMILIARES)
+									               SELECT '2'
+									                         tipo,
+									                     o.cod_asfi
+									                     --case 
+														 -- when o.cod_asfi = 12 then '14'  
+														 -- else o.cod_asfi end    
+														   motivo,
+									                     DECODE (
+									                         NVL (o.ord_bancopais, 0),
+									                         0, SUBSTR (o.corr_bancocod, 5, 2),
+									                         (SELECT codigoswift
+									                            FROM cli_paises
+									                           WHERE     codigopais = NVL (o.ord_bancopais, 0)
+									                                 AND ROWNUM = 1))
+									                         pais,
+									                     m.c6402
+									                         moneda,
+									                     'IBBGA'
+									                         entidadbancaria,
+									                     o.op_importe
+									                         monto_mo,
+									                     ganadero.fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                          0,
+									                                                          o.op_importe)
+									                         monto_bs,
+									                     o.op_numero
+									                         nro_operacion,
+									                     o.fecha_pago
+									                         fecha_operacion,
+									                     LPAD (p.cod_plaza, 2, '0')
+									                         plaza_pago,
+									                     u.nombre_asfi
+									                         nombre_agencia,
+									                     -- Se adicion? la concatenaci?n de los valores XXX debido a que por cambios el formato del Swift
+									                     -- a veces se recibe por ej. el valor CHASUS33 en lugar de CHASUS33XXX
+									                     (SELECT REPLACE (nombrebanco, ',', '')
+									                        FROM bicindex
+									                       WHERE     (   direccionbic = o.corr_bancocod
+									                                  OR direccionbic = o.corr_bancocod || 'XXX')
+									                             AND ROWNUM = 1)
+									                         corresponsal,
+									                     1
+									                         sistema,
+									                     DECODE (c2.tipo,
+									                             'E', '1',
+									                             'U', '1',
+									                             'J', '2',
+									                             'F', '1',
+									                             'I', '2')
+									                         tipo_persona,
+									                     REPLACE (REPLACE (o.t70, '/ROC/', ''), '//', ' ')
+									                         descripcion_motivo,
+									                     LPAD( NVL(c2.CODACTIVIDACIIU,c.CODACTIVIDACIIU ) , 5, '0')   
+									                         codigo_sector,
+									                     fun_pgl_convert_tc_oficial (
+									                         o.op_moneda,
+									                         0,
+									                         ((                              --NVL (OP_IMPORTE, 0)
+									                           NVL (OP_MONTO_COMISION, 0)--+ NVL (ITF, 0)
+									                                                     )))
+									                         MONTO_TOTAL_COBRADOX_SERVICIO,
+									                     CASE
+									                         WHEN (((OP_MONTO_COMISION / OP_IMPORTE) * 100) &gt; 100)
+									                         THEN
+									                             0
+									                         ELSE
+									                             ROUND (((OP_MONTO_COMISION / OP_IMPORTE) * 100),
+									                                    2)
+									                     END
+									                         PORCENTAJE_COMISION_EIF,
+									                     fun_pgl_convert_tc_oficial (o.op_moneda,
+									                                                 0,
+									                                                 OP_MONTO_COMISION)
+									                         MONTO_COMISION_EIF,
+									                     0
+									                         PORCENTAJE_COMISION_BCB,
+									                     0
+									                         MONTO_COMISION_BCB,
+									                     0
+									                         PORCENTAJE_COMISION_TERCEROS,
+									                     0
+									                         MONTO_COMISION_TERCEROS,
+									                     (SELECT REPLACE (nombrebanco, ',', '')
+									                        FROM bicindex
+									                       WHERE     (   direccionbic = o.corr_bancocod
+									                                  OR direccionbic = o.corr_bancocod || 'XXX')
+									                             AND ROWNUM = 1)
+									                         DESCRIPCION_TERCEROS_COBRAN_COMISION,
+									                       o.BEF_NROCLI CodigoClienteOrdBen
+									                FROM ordenesrecibidas o,
+									                     saldos          s,
+									                     saldos          s2,
+									                     monedas         m,
+									                     sucursales      u,
+									                     plazas          p,
+									                     cli_clientes    c2,
+									                     cli_clientes    c
+									                     LEFT JOIN cli_cod_act_ciiu ci
+									                         ON     c.codactividaciiu = ci.codactciiu
+									                            AND ci.tz_lock = 0
+									                     LEFT JOIN cli_grupos_act_ciiu gciu
+									                         ON gciu.codigo_grupo = ci.grupo AND gciu.tz_lock = 0
+									               WHERE   
+									               			 o.fecha_pago &gt;=
+									                         TO_DATE (
+									                                '',
+									                             'YYYYMMDD')
+									                     AND o.fecha_pago &lt;=
+									                         TO_DATE (
+									                                '',
+									                             'YYYYMMDD')
+									                     AND o.op_estado = 9
+									                     AND o.tz_lock = 0
+									                     AND o.cuenta_jts_oid = s.jts_oid
+									                     AND o.jts_oid_corresponsal = s2.jts_oid
+									                     AND s2.c1803 = c.codigocliente
+									                      AND o.BEF_NROCLI=c2.codigocliente
+									                     AND m.c6399 = o.op_moneda
+									                     AND u.sucursal = s.sucursal
+									                     AND p.cod_plaza = u.coddepartamento
+									                     AND o.tz_lock = 0
+									                     AND s.tz_lock = 0
+									                     AND c.tz_lock = 0
+									                     AND m.tz_lock = 0
+									              UNION
+									              --SELECT PARA RECIBIDAS DEL EXTERIOR
+                                SELECT '1'
+									                         tipo,
+									                     '9'
+									                         motivo,
+									                     --T.PAIS_DESTINO PAIS,
+									                     (SELECT codigoswift
+									                        FROM cli_paises
+									                       WHERE     UPPER (TRIM (nombrepais)) =
+									                                 UPPER (TRIM (t.pais_destino))
+									                             AND tz_lock = 0
+									                             AND ROWNUM = 1)
+									                         pais,                                   --- PENDIENTE
+									                     m.c6402
+									                         moneda,
+									                     'IBBGA'
+									                         entidad_bancaria,
+									                     t.impte_rec_remesa
+									                         monto_mo,
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                 t.impte_rec_remesa)
+									                         monto_bs,
+									                     t.num_remesa
+									                         nro_operacion,
+									                     t.fecha_recibida
+									                         fecha_operacion,
+									                     NULL
+									                         plaza_pago,
+									                     ''
+									                         nombre_agencia,
+									                     REPLACE (r.nombre_remesadora, ',', '')
+									                         corresponsal,
+									                     DECODE (UPPER (TRIM (r.sist_propio)), 'S', 2, 1)
+									                         sistema,
+									                     '1'
+									                         tipo_persona,
+									                     ''
+									                         descripcion_motivo,
+									                     LPAD( nvl(cf.CODACTIVIDADCIIU,cj.CODIGOCIIU) , 5, '0') 
+									                         codigo_sector,
+									                     
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                
+									                                                 (TARIFA_COBRADA))
+									                         MONTO_TOTAL_COBRADOX_SERVICIO,
+									                     CASE
+									                         WHEN (((TARIFA_COBRADA / IMPTE_REC_REMESA) * 100) &gt;
+									                               100)
+									                         THEN
+									                             0
+									                         ELSE
+									                             ROUND (
+									                                 ((TARIFA_COBRADA / IMPTE_REC_REMESA) * 100),
+									                                 2)
+									                     END
+									                         PORCENTAJE_COMISION_EIF,
+									                     fun_pgl_convert_tc_oficial (t.mon_rec_remesa,
+									                                                 0,
+									                                                 TARIFA_COBRADA)
+									                         MONTO_COMISION_EIF,
+									                     0
+									                         PORCENTAJE_COMISION_BCB,
+									                     0
+									                         MONTO_COMISION_BCB,
+									                     0
+									                         PORCENTAJE_COMISION_TERCEROS,
+									                     0
+									                         MONTO_COMISION_TERCEROS,
+									                     REPLACE (r.nombre_remesadora, ',', '')
+									                         DESCRIPCION_TERCEROS_COBRAN_COMISION,
+									                     0 CodigoClienteOrdBen
+									                FROM trf_ordenes t
+									                	INNER JOIN trf_remesadoras r ON r.num_remesadora = t.num_remesadora
+									                	INNER JOIN monedas m ON t.mon_rec_remesa = m.c6399		--- 677
+									                	LEFT JOIN GANADERO.CLI_PERSONASFISICAS cf ON cf.NUMEROPERSONAFISICA  = t.NRO_PERS_EMISOR 
+									                	LEFT JOIN GANADERO.CLI_PERSONASJURIDICAS cj ON cj.NUMEROPERSONAJURIDICA  = t.NRO_PERS_EMISOR
+									               WHERE     t.estado = 3
+									                     AND t.fecha_pagado &gt;=
+									                         TO_DATE (
+									                                '',
+									                             'YYYYMMDD')
+									                     AND t.fecha_pagado &lt;=
+									                         TO_DATE (
+									                                '',
+									                             'YYYYMMDD')
+									                     AND t.tipo_remesa = 2
+									                     AND t.tz_lock = 0
+									                     AND m.tz_lock = 0
+									                     AND r.tz_lock = 0
+									                     
+									   ) t 
+			)t ORDER BY tipo, fecha_operacion
+	)T</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                      name="AllowImplicitStringConversion">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Nombre de la tabla de la base de datos de origen."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especificar el modo de recuperar información de columnas externas"
+                      name="AccessMode"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Connections[IDbConnection]"
+                      connectionManagerID="{413BF411-79F6-4190-B17F-9BDFA39EBB0B}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LCBGDB2.dmart_app]"
+                      description="Administrador de conexiones administrado"
+                      name="IDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET]"
+                      name="Salida de origen de ADO NET">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[CONCATENADO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[CONCATENADO]"
+                          length="4000"
+                          lineageId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[CONCATENADO]"
+                          name="CONCATENADO"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[CONCATENADO]"
+                          dataType="wstr"
+                          length="4000"
+                          name="CONCATENADO" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET]"
+                      isErrorOut="true"
+                      name="Salida de error de origen de ADO NET">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[CONCATENADO]"
+                          dataType="wstr"
+                          length="4000"
+                          lineageId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[CONCATENADO]"
+                          name="CONCATENADO" />
+                        <outputColumn
+                          refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor de secuencias\Data Flow Task.Paths[Salida de origen de ADO NET]"
+                  endId="Package\Contenedor de secuencias\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input]"
+                  name="Salida de origen de ADO NET"
+                  startId="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor de secuencias\Tarea Ejecutar SQL"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{94CB5217-E805-4EB7-86B3-F741ED9DB07E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarea Ejecutar SQL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0828E80A-351C-40CD-950C-99EBC714113F}"
+              SQLTask:SqlStatementSource="SELECT CONVERT(VARCHAR(8), GETDATE()-1, 112) AS FechaFormateada;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::fechaProceso" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{5D0032D8-741A-43CB-92FB-2D0874888153}"
+          DTS:From="Package\Contenedor de secuencias\Tarea Ejecutar SQL"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Contenedor de secuencias\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{0A0C694D-D8BB-448A-9744-4148020AB509}"
+          DTS:From="Package\Contenedor de secuencias\Data Flow Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción 1"
+          DTS:To="Package\Contenedor de secuencias\Cargar Archivo a la Intranet" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Contenedor de secuencias\Cargar Archivo a la Intranet"
+          TopLeft="17,198" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Contenedor de secuencias\Data Flow Task"
+          TopLeft="47,121" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Contenedor de secuencias\Tarea Ejecutar SQL"
+          TopLeft="37,35" />
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción]"
+          TopLeft="122.25,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 1]"
+          TopLeft="122.25,163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="244,295"
+          Size="244,338"
+          Id="Package\Contenedor de secuencias"
+          TopLeft="388,125" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Contenedor de secuencias\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET"
+          TopLeft="446,70" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Contenedor de secuencias\Data Flow Task\Flat File Destination"
+          TopLeft="449,224" />
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias\Data Flow Task.Paths[Salida de origen de ADO NET]"
+          TopLeft="533.5,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,112"
+              Start="0,0"
+              End="0,104.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,104.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias\Data Flow Task\Origen de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

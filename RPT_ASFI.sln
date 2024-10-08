@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.33026.149
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "RPT_ASFI", "RPT_ASFI\RPT_ASFI.dtproj", "{0C9CB841-F63D-471C-933D-73A481A1D19C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C9CB841-F63D-471C-933D-73A481A1D19C}.Development|Default.ActiveCfg = Development
+		{0C9CB841-F63D-471C-933D-73A481A1D19C}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CAB0565-7955-472D-A967-A95D2484A518}
+	EndGlobalSection
+EndGlobal

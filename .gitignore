@@ -1,0 +1,67 @@
+# Ignorar archivos y carpetas generados por Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignorar archivos de build y compilación
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Ignorar archivos específicos de SSIS que no deben versionarse
+*.ispac
+*.dtproj.user
+*.dtsx.user
+*.dtproj.bak
+*.manifest
+
+# Ignorar archivos de configuración local
+app.config
+web.config
+config/
+
+# Ignorar archivos temporales y otros artefactos de desarrollo
+*.tmp
+*.temp
+*.bak
+*.old
+*.backup
+
+# Ignorar archivos de configuración de Windows y sistemas operativos
+Thumbs.db
+ehthumbs.db
+*.DS_Store
+*.directory
+
+# Ignorar archivos de configuración de herramientas y entornos específicos
+*.psess
+*.sqlsettings
+*.publishsettings
+.env
+*.local
+
+# Ignorar archivos de paquetes NuGet y configuraciones de paquetes
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+
+# Ignorar archivos de logs y salidas de ejecución
+*.log
+*.trx
+TestResults/
+Logs/
+
+# Ignorar configuraciones de despliegue locales y archivos de deploy específicos de SSIS
+deploy/
+*.dtsx.bak
+
+# Arhcivos comprimidos
+*.7z
+*.zip
